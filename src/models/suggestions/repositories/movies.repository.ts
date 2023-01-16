@@ -1,22 +1,22 @@
 import { getRepository, Repository } from 'typeorm';
 import { ICreateMovieBO } from '../bos/create-movie.bo';
 import { IFilterMovieBO } from '../bos/filter-movie.bo';
-import { MoviesEntity } from '../entities/movie.entity';
+import { MovieEntity } from '../entities/movie.entity';
 
-export class SuggestionsRepository {
-  private ormRepository: Repository<MoviesEntity>;
+export class MoviesRepository {
+  private ormRepository: Repository<MovieEntity>;
 
   constructor() {
-    this.ormRepository = getRepository(MoviesEntity);
+    this.ormRepository = getRepository(MovieEntity);
   }
 
-  public async create(data: ICreateMovieBO): Promise<MoviesEntity> {
+  public async create(data: ICreateMovieBO): Promise<MovieEntity> {
     const movie = this.ormRepository.create(data);
     await this.ormRepository.save(movie);
     return movie;
   }
 
-  public async save(movie: MoviesEntity): Promise<void> {
+  public async save(movie: MovieEntity): Promise<void> {
     await this.ormRepository.save(movie);
   }
 
@@ -24,7 +24,7 @@ export class SuggestionsRepository {
     await this.ormRepository.delete(id);
   }
 
-  public async findOne(filter: IFilterMovieBO): Promise<MoviesEntity | null> {
+  public async findOne(filter: IFilterMovieBO): Promise<MovieEntity | null> {
     const movie = await this.ormRepository.findOne({
       where: filter,
     });
@@ -32,7 +32,7 @@ export class SuggestionsRepository {
     return movie;
   }
 
-  public async find(filter: IFilterMovieBO): Promise<MoviesEntity[]> {
+  public async find(filter: IFilterMovieBO): Promise<MovieEntity[]> {
     const movies = await this.ormRepository.find({
       where: filter,
     });
