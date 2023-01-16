@@ -1,0 +1,12 @@
+# Node
+node_modules
+
+# Yarn
+yarn-error.log
+
+# TS
+tsconfig.tsbuildinfo
+
+# Production
+.env
+dist
