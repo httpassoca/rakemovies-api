@@ -2,7 +2,7 @@ export interface ICreateMovieBO {
   id: string;
   type: string;
   title: string;
-  year: string;
+  year: number;
   poster_image?: string;
   rated: string;
   released: string;
