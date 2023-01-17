@@ -37,6 +37,7 @@ export class MoviesRepository {
     const cuttedObject = shapeObject(filter);
     const movies = await this.ormRepository.find({
       where: { ...cuttedObject, title: Like(`%${cuttedObject.title}%`) },
+      select: ['title', 'id', 'imdbID', 'year', 'type', 'poster_image'],
     });
     return movies;
   }
