@@ -64,6 +64,42 @@ export class MoviesRoutes {
       moviesController.retrieveMovieList,
     );
 
+    router.put(
+      '/:id',
+      celebrate({
+        [Segments.PARAMS]: Joi.object().keys({
+          id: Joi.string().uuid().required(),
+        }),
+        [Segments.BODY]: Joi.object().keys({
+          type: Joi.string(),
+          title: Joi.string(),
+          year: Joi.number(),
+          poster_image: Joi.string(),
+          rated: Joi.string(),
+          released: Joi.string(),
+          runtime: Joi.string(),
+          genre: Joi.string(),
+          director: Joi.string(),
+          writer: Joi.string(),
+          actors: Joi.string(),
+          plot: Joi.string(),
+          plot_full: Joi.string(),
+          language: Joi.string(),
+          country: Joi.string(),
+          awards: Joi.string(),
+          metascore: Joi.string(),
+          imdbRating: Joi.string(),
+          imdbVotes: Joi.string(),
+          imdbID: Joi.string(),
+          release_dvd: Joi.string(),
+          boxOffice: Joi.string(),
+          production: Joi.string(),
+          website: Joi.string(),
+        }),
+      }),
+      moviesController.updateMovie,
+    );
+
     router.delete(
       '/:id',
       celebrate({

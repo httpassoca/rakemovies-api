@@ -3,6 +3,7 @@ import { CreateMovieService } from '../services/create-movie.service';
 import { DeleteMovieService } from '../services/delete-movie.service';
 import { RetrieveMovieService } from '../services/retrieve-movie.service';
 import { RetrieveMovieListService } from '../services/retrieve-movie-list.service';
+import { UpdateMovieService } from '../services/update-movie.service';
 
 export class MoviesController {
   public async createMovie(
@@ -33,6 +34,19 @@ export class MoviesController {
     const retrieveMovieListService = new RetrieveMovieListService();
     const movies = await retrieveMovieListService.execute(req.query);
     return res.status(200).json(movies);
+  }
+
+  public async updateMovie(
+    req: Request,
+    res: Response,
+    _next: NextFunction,
+  ): Promise<Response> {
+    const updateMovieService = new UpdateMovieService();
+    const movie = await updateMovieService.execute({
+      id: req.params.id,
+      data: req.body,
+    });
+    return res.status(200).json(movie);
   }
 
   public async deleteMovieService(
