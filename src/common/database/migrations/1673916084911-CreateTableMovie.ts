@@ -33,82 +33,102 @@ export class CreateTableMovie1673916084911 implements MigrationInterface {
           {
             name: 'rated',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'released',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'runtime',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'genre',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'director',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'writer',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'actors',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'plot',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'plot_full',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'language',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'country',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'awards',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'metascore',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'imdbRating',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'imdbVotes',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'imdbID',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'release_dvd',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'boxOffice',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'production',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'website',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'createdAt',
