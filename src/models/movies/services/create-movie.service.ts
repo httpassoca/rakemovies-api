@@ -19,7 +19,7 @@ export class CreateMovieService {
       actors: omdbMovie.Actors,
       type: omdbMovie.Type,
       title: omdbMovie.Title,
-      year: Number(omdbMovie.Year),
+      year: omdbMovie.Year,
       poster_image: omdbMovie.Poster,
       rated: omdbMovie.Rated,
       released: omdbMovie.Released,

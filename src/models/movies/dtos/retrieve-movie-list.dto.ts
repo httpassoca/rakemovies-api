@@ -1,5 +1,5 @@
 export interface IRetrieveMovieListDTO {
   search?: string;
-  year?: number;
+  year?: string;
   type?: string;
 }

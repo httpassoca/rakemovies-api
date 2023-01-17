@@ -18,7 +18,7 @@ export class MovieEntity {
   title: string;
 
   @Column()
-  year: number;
+  year: string;
 
   @Column()
   poster_image: string;

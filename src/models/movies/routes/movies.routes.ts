@@ -24,7 +24,7 @@ export class MoviesRoutes {
       celebrate({
         [Segments.QUERY]: Joi.object().keys({
           search: Joi.string(),
-          year: Joi.number(),
+          year: Joi.string(),
           type: Joi.string(),
         }),
       }),
@@ -50,7 +50,7 @@ export class MoviesRoutes {
         [Segments.BODY]: Joi.object().keys({
           type: Joi.string(),
           title: Joi.string(),
-          year: Joi.number(),
+          year: Joi.string(),
           poster_image: Joi.string(),
           rated: Joi.string(),
           released: Joi.string(),

@@ -23,7 +23,7 @@ export class CreateTableMovie1673916084911 implements MigrationInterface {
           },
           {
             name: 'year',
-            type: 'int',
+            type: 'varchar',
           },
           {
             name: 'poster_image',
