@@ -1,5 +1,4 @@
 export interface ICreateMovieBO {
-  id: string;
   type: string;
   title: string;
   year: number;
