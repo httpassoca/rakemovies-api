@@ -33,11 +33,17 @@ export class MoviesRepository {
     return movie;
   }
 
-  public async find(filter: IFilterMovieBO): Promise<MovieEntity[]> {
-    const cuttedObject = shapeObject(filter);
+  public async find({
+    title,
+    ...filter
+  }: IFilterMovieBO): Promise<MovieEntity[]> {
+    const where = shapeObject(filter);
+    if (title) {
+      Object.assign(where, { title: Like(`%${title}%`) });
+    }
     const movies = await this.ormRepository.find({
-      where: { ...cuttedObject, title: Like(`%${cuttedObject.title}%`) },
       select: ['title', 'id', 'imdbID', 'year', 'type', 'poster_image'],
+      where,
     });
     return movies;
   }

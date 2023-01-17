@@ -43,16 +43,6 @@ export class MoviesRoutes {
     );
 
     router.get(
-      '/:id',
-      celebrate({
-        [Segments.PARAMS]: Joi.object().keys({
-          id: Joi.string().uuid().required(),
-        }),
-      }),
-      moviesController.retrieveMovie,
-    );
-
-    router.get(
       '/search',
       celebrate({
         [Segments.QUERY]: Joi.object().keys({
@@ -62,6 +52,16 @@ export class MoviesRoutes {
         }),
       }),
       moviesController.retrieveMovieList,
+    );
+
+    router.get(
+      '/:id',
+      celebrate({
+        [Segments.PARAMS]: Joi.object().keys({
+          id: Joi.string().uuid().required(),
+        }),
+      }),
+      moviesController.retrieveMovie,
     );
 
     router.put(
