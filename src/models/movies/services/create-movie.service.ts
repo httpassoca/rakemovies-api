@@ -1,3 +1,4 @@
+import { HttpError } from '@common/errors/HttpError';
 import { OmbdApiMoviesProvider } from 'providers/omdb/services/omdb-api.provider';
 import { MovieEntity } from '../entities/movie.entity';
 import { MoviesRepository } from '../repositories/movies.repository';
@@ -6,6 +7,10 @@ export class CreateMovieService {
   async execute(data: { imdbId: string }): Promise<MovieEntity> {
     const moviesRepository = new MoviesRepository();
 
+    const movieAlreadyExists = await moviesRepository.findOne(data.imdbId);
+    if (movieAlreadyExists) {
+      throw new HttpError('Movie already exists', 400);
+    }
     const omdbApi = new OmbdApiMoviesProvider();
     const omdbMovie = await omdbApi.searchByIdOrTitle({
       i: data.imdbId,

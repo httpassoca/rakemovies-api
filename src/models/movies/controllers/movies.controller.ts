@@ -22,7 +22,7 @@ export class MoviesController {
     _next: NextFunction,
   ): Promise<Response> {
     const retrieveMovieService = new RetrieveMovieService();
-    const movie = await retrieveMovieService.execute({ id: req.params.id });
+    const movie = await retrieveMovieService.execute({ imdbId: req.params.id });
     return res.status(200).json(movie);
   }
 
