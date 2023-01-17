@@ -7,14 +7,14 @@ export class UpdateMovieService {
   async execute({ imdbId, data }: IUpdateMovieDTO): Promise<MovieEntity> {
     const moviesRepository = new MoviesRepository();
 
-    const user = await moviesRepository.findOne(imdbId);
-    if (!user) {
+    const movie = await moviesRepository.findOne(imdbId);
+    if (!movie) {
       throw new HttpError('Movie not found', 404);
     }
 
-    Object.assign(user, data);
-    await moviesRepository.save(user);
+    Object.assign(movie, data);
+    await moviesRepository.save(movie);
 
-    return user;
+    return movie;
   }
 }
