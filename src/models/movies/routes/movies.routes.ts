@@ -42,6 +42,16 @@ export class MoviesRoutes {
       moviesController.createMovie,
     );
 
+    router.delete(
+      '/:id',
+      celebrate({
+        [Segments.PARAMS]: Joi.object().keys({
+          id: Joi.string().uuid().required(),
+        }),
+      }),
+      moviesController.deleteMovieService,
+    );
+
     return router;
   }
 }
