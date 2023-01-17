@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('movie')
+@Entity('movies')
 export class MovieEntity {
   @PrimaryGeneratedColumn()
   id: string;
@@ -18,7 +18,7 @@ export class MovieEntity {
   title: string;
 
   @Column()
-  year: string;
+  year: number;
 
   @Column()
   poster_image: string;
