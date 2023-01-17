@@ -25,9 +25,9 @@ export class MoviesRepository {
     await this.ormRepository.delete(id);
   }
 
-  public async findOne(filter: IFilterMovieBO): Promise<MovieEntity | null> {
+  public async findOne(id: string): Promise<MovieEntity | null> {
     const movie = await this.ormRepository.findOne({
-      where: filter,
+      where: { id },
     });
     if (!movie) return null;
     return movie;
