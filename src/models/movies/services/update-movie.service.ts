@@ -4,12 +4,12 @@ import { MovieEntity } from '../entities/movie.entity';
 import { MoviesRepository } from '../repositories/movies.repository';
 
 export class UpdateMovieService {
-  async execute({ id, data }: IUpdateMovieDTO): Promise<MovieEntity> {
+  async execute({ imdbId, data }: IUpdateMovieDTO): Promise<MovieEntity> {
     const moviesRepository = new MoviesRepository();
 
-    const user = await moviesRepository.findOne(id);
+    const user = await moviesRepository.findOne(imdbId);
     if (!user) {
-      throw new HttpError('User not found', 404);
+      throw new HttpError('Movie not found', 404);
     }
 
     Object.assign(user, data);
