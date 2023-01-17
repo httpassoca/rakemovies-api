@@ -1,10 +1,13 @@
 import 'dotenv/config';
+import 'reflect-metadata';
 import 'express-async-errors';
+
 import express from 'express';
 import cors from 'cors';
 import { errors as celebrateErrors } from 'celebrate';
 import Database from '@common/database';
 import ErrorsMiddleware from '@common/middlewares/ErrorsMiddleware';
+import { MoviesRoutes } from '@models/movies/routes/movies.routes';
 
 const main = async (): Promise<void> => {
   // DATABASE
@@ -17,6 +20,10 @@ const main = async (): Promise<void> => {
   // EXPRESS: pre-routes middlewares
   app.use(cors());
   app.use(express.json());
+
+  // EXPRESS: routes
+  const moviesHttp = new MoviesRoutes();
+  app.use('/movies', moviesHttp.register());
 
   // EXPRESS: post-routes middlewares
   const errorsMiddleware = new ErrorsMiddleware();
