@@ -43,7 +43,7 @@ export class MoviesController {
   ): Promise<Response> {
     const updateMovieService = new UpdateMovieService();
     const movie = await updateMovieService.execute({
-      id: req.params.id,
+      imdbId: req.params.id,
       data: req.body,
     });
     return res.status(200).json(movie);
