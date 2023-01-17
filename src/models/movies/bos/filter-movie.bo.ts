@@ -1,6 +1,6 @@
 export interface IFilterMovieBO {
   id?: string;
   title?: string;
-  year?: string;
+  year?: number;
   type?: string;
 }

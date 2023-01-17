@@ -1,4 +1,5 @@
-import { getRepository, Repository } from 'typeorm';
+import shapeObject from '@common/utils/shapeObject';
+import { getRepository, Like, Repository } from 'typeorm';
 import { ICreateMovieBO } from '../bos/create-movie.bo';
 import { IFilterMovieBO } from '../bos/filter-movie.bo';
 import { MovieEntity } from '../entities/movie.entity';
@@ -33,8 +34,9 @@ export class MoviesRepository {
   }
 
   public async find(filter: IFilterMovieBO): Promise<MovieEntity[]> {
+    const cuttedObject = shapeObject(filter);
     const movies = await this.ormRepository.find({
-      where: filter,
+      where: { ...cuttedObject, title: Like(`%${cuttedObject.title}%`) },
     });
     return movies;
   }

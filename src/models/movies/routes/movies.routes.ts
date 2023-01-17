@@ -42,6 +42,18 @@ export class MoviesRoutes {
       moviesController.createMovie,
     );
 
+    router.get(
+      '/search',
+      celebrate({
+        [Segments.QUERY]: Joi.object().keys({
+          search: Joi.string(),
+          year: Joi.number(),
+          type: Joi.string(),
+        }),
+      }),
+      moviesController.retrieveUserList,
+    );
+
     router.delete(
       '/:id',
       celebrate({
