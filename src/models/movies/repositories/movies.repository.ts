@@ -1,5 +1,5 @@
 import shapeObject from '@common/utils/shapeObject';
-import { getRepository, Like, Repository } from 'typeorm';
+import { getRepository, ILike, Repository } from 'typeorm';
 import { ICreateMovieBO } from '../bos/create-movie.bo';
 import { IFilterMovieBO } from '../bos/filter-movie.bo';
 import { MovieEntity } from '../entities/movie.entity';
@@ -39,7 +39,7 @@ export class MoviesRepository {
   }: IFilterMovieBO): Promise<MovieEntity[]> {
     const where = shapeObject(filter);
     if (title) {
-      Object.assign(where, { title: Like(`%${title}%`) });
+      Object.assign(where, { title: ILike(`%${title}%`) });
     }
     const movies = await this.ormRepository.find({
       select: ['title', 'id', 'imdbID', 'year', 'type', 'poster_image'],
