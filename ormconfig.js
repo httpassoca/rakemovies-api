@@ -2,15 +2,14 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-const folder = process.env.NODE_ENV === 'production' ? 'dist' : 'src';
-const ext = process.env.NODE_ENV === 'production' ? 'js' : 'ts';
-const psqlHost = process.env.NODE_ENV === 'production' ? process.env.POSTGRESQL_HOST_PRODUCTION : process.env.POSTGRESQL_HOST_DEVELOPMENT;
+const folder = 'src';
+const ext = 'ts';
 
 module.exports = [
   {
     'name': 'default',
     'type': 'postgres',
-    'host': psqlHost,
+    'host': process.env.POSTGRESQL_HOST,
     'port': process.env.POSTGRESQL_PORT,
     'username': process.env.POSTGRESQL_USERNAME,
     'password': process.env.POSTGRESQL_PASSWORD,

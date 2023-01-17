@@ -2,7 +2,7 @@ FROM node:alpine
 
 ARG API_PORT=3000
 
-WORKDIR /usr/rakemovie-api
+WORKDIR /usr/rakemovie
 
 COPY package.json ./
 COPY yarn.lock ./

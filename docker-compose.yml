@@ -1,18 +1,6 @@
 version: '3'
 
 services:
-  pocket-crud-api:
-    build:
-      context: .
-      args:
-        - API_PORT=${API_PORT}
-    command: yarn start:prod
-    ports:
-      - ${API_PORT}:${API_PORT}
-    depends_on:
-      - rakemovie-db
-    restart: unless-stopped
-
   rakemovie-db:
     image: bitnami/postgresql:15.1.0
     ports:
