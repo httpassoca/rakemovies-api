@@ -23,9 +23,9 @@ export class MoviesRoutes {
       '/search',
       celebrate({
         [Segments.QUERY]: Joi.object().keys({
-          search: Joi.string(),
-          year: Joi.string(),
-          type: Joi.string(),
+          search: Joi.string().optional(),
+          year: Joi.string().optional(),
+          type: Joi.string().optional(),
         }),
       }),
       moviesController.retrieveMovieList,

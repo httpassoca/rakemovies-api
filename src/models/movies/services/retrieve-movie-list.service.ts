@@ -6,9 +6,9 @@ export class RetrieveMovieListService {
   async execute(dto: IRetrieveMovieListDTO): Promise<MovieEntity[]> {
     const moviesRepository = new MoviesRepository();
     const movies = await moviesRepository.find({
-      year: dto.year,
-      type: dto.type,
-      title: dto.search,
+      year: dto.year || undefined,
+      type: dto.type || undefined,
+      title: dto.search || undefined,
     });
 
     return movies;
