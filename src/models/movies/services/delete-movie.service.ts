@@ -6,7 +6,7 @@ export class DeleteMovieService {
   async execute({ id }: IDeleteMovieDTO): Promise<void> {
     const moviesRepository = new MoviesRepository();
 
-    const movie = await moviesRepository.findOne(id);
+    const movie = await moviesRepository.findOneById(id);
     if (!movie) {
       throw new HttpError('Movie not found', 404);
     }

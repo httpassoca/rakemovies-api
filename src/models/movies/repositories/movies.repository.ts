@@ -33,6 +33,14 @@ export class MoviesRepository {
     return movie;
   }
 
+  public async findOneById(id: string): Promise<MovieEntity | null> {
+    const movie = await this.ormRepository.findOne({
+      where: { id },
+    });
+    if (!movie) return null;
+    return movie;
+  }
+
   public async find({
     title,
     ...filter
